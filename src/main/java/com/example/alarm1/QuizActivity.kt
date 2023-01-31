@@ -12,48 +12,41 @@ import androidx.appcompat.app.AppCompatActivity
 
 class QuizActivity : AppCompatActivity() {
 
-    private var rightAnswer: String? = null
-    private var rightAnswerCount = 0
-    private var quizCount = 1
+    private var rightAnswer: String? = null     // 正解の選択肢
+    private var rightAnswerCount = 0            // 現状正解数
+    private var quizCount = 1                   // 何問目か
+    private val QUIZ_COUNT = 2                  // 目標正解数
+    private val ALL_QUIZ_COUNT = 3              // 全問題数
     private var quizData: MutableList<MutableList<String>> = mutableListOf(mutableListOf("null"))
-    private val QUIZ_COUNT = 2
 
-
-    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var mediaPlayer: MediaPlayer   // 音楽再生用
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
+        
         setContentView(R.layout.activity_quiz)
-
 
         // 音声ファイルの再生用
         mediaPlayer = MediaPlayer.create(this, R.raw.alarm_sound6)
         mediaPlayer.isLooping=true
 
-        mediaPlayer.start();
-
         // 音楽の再生
-        /*
-        val intent = Intent(application, BGMService::class.java)
-        // Serviceの開始
-        startService(intent)
-         */
+        mediaPlayer.start()
 
         this.quizData = this.setQuizDate()
 
         showNextQuiz()
-
     }
 
+    
     override fun onDestroy() {
         super.onDestroy()
 
         mediaPlayer.release()
     }
 
+    
     // クイズデータの設定（Excelから?? ）
     private fun setQuizDate(): MutableList<MutableList<String>> {
 
@@ -74,7 +67,7 @@ class QuizActivity : AppCompatActivity() {
         val answerBtn3: Button = findViewById(R.id.answerBtn3)
         val answerBtn4: Button = findViewById(R.id.answerBtn4)
 
-        //countLabel.text = getString(R.string.count_label, quizCount)
+        countLabel.text = getString(R.string.count_label, quizCount)
 
         // 問題文
         questionLabel.text = quiz[0]
@@ -114,7 +107,6 @@ class QuizActivity : AppCompatActivity() {
             alertTitle = "不正解。。"
         }
 
-
         // ダイアログ作成
         AlertDialog.Builder(this)
             .setTitle(alertTitle)
@@ -128,10 +120,9 @@ class QuizActivity : AppCompatActivity() {
 
 
     private fun checkQuizCount(){
-        if(quizCount == QUIZ_COUNT){
+        if( rightAnswerCount == QUIZ_COUNT || quizCount >= ALL_QUIZ_COUNT){
             stopService(intent)
             mediaPlayer.stop()
-
 
             finish()
 
