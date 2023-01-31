@@ -92,12 +92,6 @@ class MainActivity : AppCompatActivity() {
         val btn2 = findViewById<Button>(R.id.addbtn)
 
         btn2.setOnClickListener {
-
-            /* クイズ画面に遷移
-            val intent2 = Intent(this, QuizActivity::class.java)
-            startActivity(intent2)
-            */
-
             /* 新規アラーム*/
             val intent = Intent(applicationContext, SetAlarmActivity::class.java)
             val str = "addAlarm"
