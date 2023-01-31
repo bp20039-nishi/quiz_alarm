@@ -21,7 +21,7 @@
        android:id="@+id/reloadbtn"
        android:layout_width="0dp"
        android:layout_height="wrap_content"
-       android:text="test"
+       android:text="test alarm"
        app:layout_constraintTop_toTopOf="@id/addbtn"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintLeft_toLeftOf="parent"
@@ -31,7 +31,7 @@
        android:id="@+id/addbtn"
        android:layout_width="0dp"
        android:layout_height="wrap_content"
-       android:text="add"
+       android:text="add alarm"
        app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintLeft_toRightOf="@+id/reloadbtn"
        app:layout_constraintRight_toRightOf="parent"/>
