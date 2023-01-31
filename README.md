@@ -1,4 +1,7 @@
-# quiz_alarm
+# クイズアラームアプリケーション
 ## 概要
+「二度寝を防ぐ」ことを目的に制作した、簡単なクイズを解かないと止まらないアラームアプリ
+## 環境
+AndroidStdio上で、Kotlinを用いて作成。エミュレータは「Pixel 5 API 33」で実行を確認しております
 ## ファイル構成
-androidStudioにおける、alarm1(プロジェクト名)/app/srcをGitにUpしました。
+androidStudioにおける、alarm1(プロジェクト名)/app/srcをGitにUpしました
